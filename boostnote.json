@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "key": "5a2ab880527ae7875e4a",
+      "color": "#1278BD",
+      "name": "Default"
+    },
+    {
+      "key": "5d266977ba7999e86786",
+      "color": "#2BA5F7",
+      "name": "Spikes"
+    },
+    {
+      "key": "2fa5929e7adc9335979b",
+      "color": "#2BA5F7",
+      "name": "Estimates"
+    },
+    {
+      "key": "3136db0a7a80c90424a0",
+      "color": "#30D5C8",
+      "name": "Meeting Notes"
+    },
+    {
+      "key": "905112674e134e90e751",
+      "color": "#2BA5F7",
+      "name": "Style Guide"
+    }
+  ],
+  "version": "1.0"
+}

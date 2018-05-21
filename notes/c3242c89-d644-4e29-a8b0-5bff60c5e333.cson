@@ -1,0 +1,47 @@
+createdAt: "2018-05-21T15:48:14.270Z"
+updatedAt: "2018-05-21T15:48:22.584Z"
+type: "MARKDOWN_NOTE"
+folder: "905112674e134e90e751"
+title: "Component Promotion Process"
+content: '''
+  # Component Promotion Process
+  
+  The goal of the promotion process is to ensure only high quality components with carefully considered API's are added to the shared component library.
+  
+  ### 1. **The initial component creation**
+  
+  Most components will start off in an app first and not the shared library. This gives the engineer the freedom to explore and build bespoke solutions that are the most time efficient and fit the project needs without the added overhead of making it a shared component.
+  
+  ### 2. **Evaluating the components API and documenting**
+  
+  After the component has moved beyond the initial exploration phase it's ready to be considered for promotion to the style guide. At this point the API for the component needs to be evaluated and discussed to make sure it makes sense and can be easily used by other engineers. During this process the API's documentation should be written detailing exactly how the api works and any interaction best practices.
+  
+  #### Things that make a good component API
+  
+  1.  Method / prop names should be consistent with existing shared components.
+  2.  The API should be extensible by providing ways to override styling and hooks into the components lifecycle.
+  3.  An engineer familiar with the library should be able to guess most of the APIs of this component without referring to the documentation.
+  
+  ### 3. **Insuring browser and user compatibility**
+  
+  Once the final API for the component has been implemented the component needs to be hardened. The component needs to be manually checked in all supported browsers and have its accessibility is evaluated.
+  
+  #### Expected outcomes
+  
+  1.  The component should appear the same in all supported browsers.
+  2.  The component should behave consistently in all supported browsers.
+  3.  The component should have been checked against the ARIA widget checklist for accessibility.
+  4.  All pointer-less operations should be verified (A users should be able to interact with this component with only the keyboard).
+  
+  ### 4. **Creating meaningful tests**
+  
+  To maintain high code quality the component needs to have 100% unit test code coverage of logical functionality. A component snapshot test should also be made to prevent any accidental regressions in the future.
+  
+  ### 5. **Adding a demo and code examples**
+  
+  As the last step the demo(s) for the component should be added to styleguidist, along with code samples and the documentation created in step 2.
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false

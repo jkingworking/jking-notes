@@ -1,0 +1,85 @@
+createdAt: "2018-05-21T15:45:20.712Z"
+updatedAt: "2018-05-21T15:45:36.120Z"
+type: "MARKDOWN_NOTE"
+folder: "5a2ab880527ae7875e4a"
+title: "Setting up virtualBox for IE testing while deving locally (on Mac)"
+content: '''
+  # Setting up virtualBox for IE testing while deving locally (on Mac)
+  
+  ## Add a hosts entry on your mac
+  > In order for your local dev proxy to intercept the requests and 
+  
+  In the terminal open your hosts file
+  
+  ```
+  sudo nano /etc/hosts
+  ```
+  Add this line to the bottom
+  
+  ```
+  127.0.0.1 local.csdisco.com
+  ```
+  
+  ## Setup your remote EC2 instance use custom domain
+  > These changes are all temporary and should only be done on your EC2 instance. After you have finished testing in VirtualBox revert them.
+  
+  **DO NOT STAGE OR COMMIT THESE CHANGES** It's a good idea to create a stash of these changes for faster application in the future.
+  
+  For each of the following files preform the steps below:
+  
+  - `CasiLabs.Disco.ServerAdmin/Web.config`
+  - `CasiLabs.Disco.WebUI/Web.config`
+  
+  1. Find this line `<add key="DiscoOAuthServerUrl" value="http://localhost/DiscoIdentityServer" />`
+  1. Change it to `<add key="DiscoOAuthServerUrl" value="http://local.csdisco.com/DiscoIdentityServer" />`
+  1. Find `<system.web>`
+  1. Insert this code above that line
+  
+  ## Update Raven to allow your matter to use the domain
+  1. Open raven db
+  2. Go to `db/DiscoSystem2`
+  3. Click on `MatterContext` in the list on the left
+  4. In the array `Hostnames` add `"local.csdisco.com"`
+  5. Click `save`
+  6. In the upper right corner click on `DiscoSystem2` and choose `DiscoIdentityServer`
+  7. Click on `ClientApplications` in the list on the left
+  4. In the array `RedirectUris` add `"http://local.csdisco.com/*/callback/disco"`
+  
+  On your EC2 instance open powershell and enter `iisreset`. This will flush the caches.
+  
+  ## Test that it's all working on your mac
+  On your mac you should be able to go to [http://local.csdisco.com/DiscoWebNew/Enron20140703](http://local.csdisco.com/DiscoWebNew/Enron20140703) and everything should just work.
+  
+  ## Install VirtualBox
+  	brew cask install virtualbox 
+  	
+  ## Get IE running in VirtualBox
+  1. Go [here](https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/) and download the version of IE and windows want to use.
+  	- **Note:** Mac users will need to use a tool that supports zip64, like The Unarchiver, to unzip the files.
+  1. Follow the [install steps](https://az792536.vo.msecnd.net/vms/release_notes_license_terms_8_1_15.pdf).
+  1. Create an image of the machine before starting the machine for the first time.
+  	- **Note:** These virtual machines expire after 90 days. Creating a snapshot when you first install the virtual machine which you can roll back to later will help get around this.
+  
+  ## Add an entry in the windows hosts file
+  > You'll need to do this step on your EC2 instance as well as the first time booting a VirtualBox image and after restoring to the snaphot when the tial has expired.
+  
+  1. Click start
+  1. Right click on 'Notepad' and select 'Run as administrator'
+  1. Open the file `C:\\Windows\\System32\\drivers\\etc\\hosts`
+  1. At the bottom of the file add the line
+  
+  ```
+  local.csdisco.com 10.0.2.2
+  ```
+  ## Test that it's all working on your VirtualBox
+  1. Open ie and go to [http://local.csdisco.com/DiscoWebNew/Enron20140703](http://local.csdisco.com/DiscoWebNew/Enron20140703)
+  2. You should be presented with the login screen.
+  
+'''
+tags: [
+  "setup"
+  "dev"
+  "getting_started"
+]
+isStarred: false
+isTrashed: false

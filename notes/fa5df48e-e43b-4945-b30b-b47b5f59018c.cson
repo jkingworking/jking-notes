@@ -1,0 +1,98 @@
+createdAt: "2018-05-21T15:47:52.685Z"
+updatedAt: "2018-05-21T15:48:00.171Z"
+type: "MARKDOWN_NOTE"
+folder: "905112674e134e90e751"
+title: "Style guide (husky)"
+content: '''
+  # Style guide (husky)
+  
+  ## Structure
+  
+  ### High level Overview _1 Repo / 3 Packages_
+  
+  > A single repo using lerna that publishes 3 packages. For more information on this decision see the [thought process](./Structures-Thought-process.md)
+  
+  #### **Repo: `csdisco/husky`**
+  
+  #### **Package `@disco/husky`**
+  
+  This package is a convenience wrapper to allow import of both core and react-components in one. It will allow imports such as
+  
+  ```
+  // in LESS
+  @import (reference) '@disco/husky/tokens/less/variables.less';
+  
+  // in JS
+  import { Component } from '@disco/husky/components';
+  import { colors } '@disco/husky/tokens/json';
+  ```
+  
+  #### **Package `@disco/husky-core`**
+  
+  This package will contain only the variable tokes, global style, and html entity styles. It can be imported via **NPM** or included via a `link` from the **cdn**. All semver versions of the styles will be available from the CND, with the newest aliased to `latest`. ie (`https://cdn.csdisco.com/styleguide/2.0.5/husky-core.min.css` and `https://cdn.csdisco.com/styleguide/latest/husky-core.min.css`)
+  
+  #### **Package `@disco/husky-react-components`**
+  
+  This package will contain only the styled react components, it will have a dependency on `@disco/husky-core`. It can only be imported via **NPM**.
+  
+  ### Repo File Structure
+  
+  ```
+  disco-husky/
+    package.json
+    docs/
+    packages/
+      husky/
+        package.json
+        src/
+        lib/
+      husky-core/
+        package.json
+        src/
+        lib/
+      husky-react-components/
+        package.json
+        src/
+        lib/
+  ```
+  
+  ## FAQ & Things to consider
+  
+  ### Importing the Style Guide and general Usage
+  
+  #### How will style only consumers, such as wordpress or internal tools, incorporate the style guide?
+  
+  * Using a `link` tag they can include a CDN copy of the style guides global css file.
+  
+  #### How will existing apps; review, orgs, etc., incorporate the style guide?
+  
+  * Each app will add a `link` tag in the root html file that points to a CDN copy of the style guides global css file.
+  * All app will need to remove all existing global styles and should not make style overrides for html entities, or using wildcard selectors.
+  * The style guide will be a competitor to Omakase not a refactor of it. So components will be imported from the style guide.
+  
+  ### Versioning of components
+  
+  #### How will new versions of components be added to the style guide?
+  
+  * Components will have to go through a promotion process in order to be added to the style guide.
+  	* The promotion process details can be found [here](./Component-Promotion-Process.md)
+  * Once a component has been added to the style guide no changes can be made to that component that would break it's API, only minor updates and bug fixes can be made to the component.
+  * When breaking changes are needed a new component must be created to ensure backward compatibility in perpetuity.
+  
+  #### How will feature flags be accounted for?
+  
+  * Feature flagging is a concern only of the consuming apps not of the style guide. Each app must decide how it will implement feature toggling.
+  * By ensuring that once a component is introduced to the style guide that its API will never change apps can reliably include components in perpetuity.
+  
+  ### How can global style changes be introduced?
+  - Changes made to the `husky/core` package will be picked up during each build of each app.
+  - Using proper semver convention style changes can be rolled out such that all apps include them automatically. In the event of a large or breaking style change a major version update can opted in by the apps.
+  - Any `link` usages that rely on the version `latest` will be automatically updated without a new build being made. This use case is not encouraged for DISCO apps but is encouraged for marketing, and internal tool usages.
+  
+  ####  How will feature toggles be accounted for?
+  - Feature toggling the global html `link` element and package versions are the best ways.
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false

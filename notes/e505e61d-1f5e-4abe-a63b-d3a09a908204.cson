@@ -1,0 +1,31 @@
+createdAt: "2018-05-21T15:42:53.729Z"
+updatedAt: "2018-05-21T15:43:04.909Z"
+type: "MARKDOWN_NOTE"
+folder: "3136db0a7a80c90424a0"
+title: "Notes For meeting with Edgar"
+content: '''
+  # Notes For meeting with Edgar
+  
+  ## Backbone templates / react components
+  - In a backbone views, `template(s)` refers to a mustache template(s).  
+  ie. `Apps/review/templates/matter/your-data/uploads`
+  - React components can be used in backbone as subviews
+  
+  ### The API calls are a mix of ways
+  - using createClient v1 (`apps/review/models/ingests/remote.js`)
+  - using backbone models and collections (`apps/review/pages/ingests/ingest-session-model.js`)
+  	- You'll want to look into how the prefect collection works.
+  - `$.ajax` (`apps/review/pages/ingests/index-page.js:95`)
+  
+  ### Events
+  - The `events` for each view is a list of the observed events in that view.
+  - Some data from the backbone models is synced back to redux.  
+  `apps/review/pages/ingests/ingest-session-model.js:217`
+  - Global disco object
+  
+'''
+tags: [
+  "prep"
+]
+isStarred: false
+isTrashed: false

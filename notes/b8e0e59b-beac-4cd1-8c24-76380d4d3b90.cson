@@ -1,0 +1,87 @@
+createdAt: "2018-05-21T15:48:04.176Z"
+updatedAt: "2018-05-21T15:48:11.318Z"
+type: "MARKDOWN_NOTE"
+folder: "905112674e134e90e751"
+title: "Possible Structures"
+content: '''
+  # Possible Structures
+  
+  ### 1 Repos / 1 Package _(simple, but less future focused)_
+  
+  > A single repo that serves all style guide artifacts from a single place package
+  
+  #### Repo: `csdisco/husky`
+  
+  #### Package: `@disco/husky`
+  
+  This package would contain all the variables, tokes, global styles, html entity styles, and styled react components.
+  
+  The variables and components would be imported via **NPM** and the global styles would be included via a `link` from the **cdn**. All semver versions of the styles will be pushed to a CND, with the newest aliased to `latest`. ie (`https://cdn.csdisco.com/styleguide/2.0.5/husky-core.min.css` and `https://cdn.csdisco.com/styleguide/latest/husky-core.min.css`)
+  
+  | Pros                                       | Cons                                                              |
+  | :----------------------------------------- | :---------------------------------------------------------------- |
+  | Only 1 package to maintain                 | Would include a react dependency by all consuming packages        |
+  | Version incrementing would only 1 packages | Would be difficult to include components that don't use react.    |
+  | Only 1 build and test processes            | The core could not be easily consumed by non-js apps (ios, c#)    |
+  |                                            | Mixes concerns with core styles and framework specific components |
+  
+  ---
+  
+  ### 3 Repos / Packages _(longer term thinking but more difficult to maintain)_
+  
+  > Each repo serves a very specific purpose and maintains a clear separation of concerns.
+  
+  #### **Repo: `csdisco/husky-core` Package: `@disco/husky-core`**
+  
+  This package will contain only the variable tokes, global style, and html entity styles. It can be imported via **NPM** or included via a `link` from the **cdn**. All semver versions of the styles will be available from the CND, with the newest aliased to `latest`. ie (`https://cdn.csdisco.com/styleguide/core/2.0.5/husky-core.min.css` and `https://cdn.csdisco.com/styleguide/core/latest/husky-core.min.css`)
+  
+  #### **Repo: `csdisco/husky-react-components` Package: `@disco/husky-react-components`**
+  
+  This package will contain only the styled react components, it will have a dependency on `@disco/husky-core`. It can only be imported via **NPM**.
+  
+  #### **Repo: `csdisco/husky` Package: `@disco/husky`**
+  
+  This package is a convenience wrapper around the 2 other style guide repos `@disco/husky-core` and `@disco/husky-react-components`
+  
+  | Pros                                              | Cons                                                               |
+  | :------------------------------------------------ | :----------------------------------------------------------------- |
+  | Clear separation of concerns                      | More time required to maintain 3 packages                          |
+  | Would allow imports that don't depend on react    | Version incrementing core will require publishing all 3 packages   |
+  | Core could be brought in by non-js apps (ios, c#) | Version incrementing components will require publishing 2 packages |
+  |                                                   | Would require 3 build and test processes                           |
+  |                                                   | Running test across all repos would be a challenge                 |
+  
+  ---
+  
+  ### 1 Repo / 3 Packages _(best option)_
+  
+  > A single repo using lerna that publishes 3 packages
+  
+  #### **Repo: `csdisco/husky`**
+  
+  #### **Package `@disco/husky-core`**
+  
+  This package will contain only the variable tokes, global style, and html entity styles. It can be imported via **NPM** or included via a `link` from the **cdn**. All semver versions of the styles will be available from the CND, with the newest aliased to `latest`. ie (`https://cdn.csdisco.com/styleguide/2.0.5/husky-core.min.css` and `https://cdn.csdisco.com/styleguide/latest/husky-core.min.css`)
+  
+  #### **Package `@disco/husky-react-components`**
+  
+  This package will contain only the styled react components, it will have a dependency on `@disco/husky-core`. It can only be imported via **NPM**.
+  
+  #### **Package `@disco/husky`**
+  
+  This package is a convenience wrapper around the 2 other style guide repos `@disco/husky-core` and `@disco/husky-react-components`
+  
+  | Pros                                                                                         | Cons |
+  | :------------------------------------------------------------------------------------------- | :--- |
+  | Clear separation of concerns                                                                 |      |
+  | Would allow importing core without react dependency                                          |      |
+  | Core could be brought in by non-js apps (ios, c#)                                            |      |
+  | Easy to maintain in a 1 repo                                                                 |      |
+  | Package versions will be kept in sync automatically                                          |      |
+  | Requires only a single build / test suite                                                    |      |
+  | Could easily create components that don't use react and export in new package from same repo |      |
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false

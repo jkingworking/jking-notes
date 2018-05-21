@@ -1,0 +1,31 @@
+createdAt: "2018-05-21T15:43:16.927Z"
+updatedAt: "2018-05-21T15:43:48.585Z"
+type: "MARKDOWN_NOTE"
+folder: "2fa5929e7adc9335979b"
+title: "PSDN-3510, PSDN-3516,PSDN-3514 Estimates"
+content: '''
+  # PSDN-3510, PSDN-3516,PSDN-3514 Estimates
+  ## PSDN-3510 (Adding checkbox to form (0.5 days)
+  * [ ] .25h - Set default
+  * [ ] .5h - Should set data in backbone
+  * [ ] 1h - Add pendo tool tip
+  * [ ] .25h - When copying from a previos production. If the previous value is null ie not `true` / `false` set to match previous behavior;
+  
+  ## PSDN-3516 (Restricting Manage Review Stages Page elements for roles without Metrics permission)
+  - [ ] 1h - Restricting metrics page tab
+  - [ ] 0.5h - Adding access restricted tooltip to disabled element.
+  
+  ## PSDN-3515 (Restricting Manage Review Stages Page elements for roles with only Metrics permission)
+  - [ ] 1h - Restricting review page tabs
+  - [ ] 1h - Adding access restricted tooltip to disabled elements. It's possible that this tool tip with be placed on an element that contains a warning triangle about document permissions.
+  - [ ] 2h - Styling the new "dark" access restricted tooltip. This is will have some regression risk for other useages of this component.
+  
+  ## PSDN-3514 (Redirecting users with only Metrics permission after login)
+  - [ ] 0h - looks like a backend redirect
+  - [ ]
+  
+  ## PSDN-3513
+'''
+tags: []
+isStarred: false
+isTrashed: false

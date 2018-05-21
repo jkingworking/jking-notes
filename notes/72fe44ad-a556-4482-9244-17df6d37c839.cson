@@ -1,0 +1,52 @@
+createdAt: "2018-05-21T15:44:47.355Z"
+updatedAt: "2018-05-21T15:45:02.507Z"
+type: "MARKDOWN_NOTE"
+folder: "3136db0a7a80c90424a0"
+title: "Walk Matt though - Custom error notes"
+content: '''
+  # Walk Matt though - Custom error notes
+  
+  ## Step 1
+  ### File
+  `/Users/jking/CSDisco/disco-app/CasiLabs.Disco.WebUI/client/apps/review/modules/search-results/effects/list-search-response.js`
+  
+  ### Change
+  Line: 13
+  
+  ```
+  const message = first(meta.errorDetails) || first(meta.errorDetail) || meta.message;
+  ```
+  
+  ## Step 2
+  ### File
+  `/Users/jking/CSDisco/disco-app/CasiLabs.Disco.WebUI/client/apps/review/modules/search-results/constants.js`
+  
+  ### Change
+  
+  Line: 13
+  ```
+  'parse_error': 'There was an error with your search. %s',
+  ```
+  
+  ## Step 3
+  ### File
+  `/Users/jking/CSDisco/disco-app/CasiLabs.Disco.WebUI/client/apps/review/modules/search-results/selectors/meta.js`
+  
+  ### Change
+  Line: 2
+  
+  ```
+  import { get, has, isString, isEmpty } from 'lodash';
+  ```
+  
+  Line: 78
+  
+  ```
+  return ERROR_TYPES[type].replace('%s', get(meta, 'message', ''));
+  ```
+  
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false

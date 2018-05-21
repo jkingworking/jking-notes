@@ -1,0 +1,43 @@
+createdAt: "2018-05-21T15:41:31.300Z"
+updatedAt: "2018-05-21T15:44:18.178Z"
+type: "MARKDOWN_NOTE"
+folder: "2fa5929e7adc9335979b"
+title: "PSDN-3557,PSDN-3556,PSDN-3542,PSDN-3539 Estimates"
+content: '''
+  # PSDN-3557,PSDN-3556,PSDN-3542,PSDN-3539 Estimates
+  Front End ONLY Work Estimate - 
+  
+  ## PSDN-3557 (2d)
+  * [ ] 1d - createing color dropdown.
+  * [ ] 0.5d - force selection & disable when document format doesn't support color.
+  * [ ] 0.5d - Ensuring create from previous works
+  
+  ## PSDN-3556 (1d)
+  * [ ] 0.25d - getting / setting data to state & API requests. 
+  * [ ] 0.5d - updating example filenames.
+  
+  ## PSDN-3542 (1d)
+  * [ ] 1d - Write custom stamp character type / length validation
+  	- Which non([a-z][0-9]) characters should be allowed?
+  
+  ## PSDN-3539 (1.5d)
+  * [ ] 0.25d - Making input appear and disappear conditionally.
+  * [ ] 0.75d - getting / setting data to state & API requests.
+  * [ ] 0.5d - Ensuring create from previous works and works with re-orderable stamps
+  
+  ## PSDN-3538 (3d)
+  * [ ] 2d - Implementing React-dnd
+  * [ ] 0.75d - Firing events to update API data on stamp re-order
+  * [ ] 0.25d - Ensuring create from previous works with re-orderable stamps
+  
+  ## PSDN-3537 (2d)
+  * [ ] 2h - Adding checkbox
+  * [ ] 2h - getting / setting checkbox state including from previous.
+  * [ ] 0.5d - Having checkbox trigger data refresh from API
+  * [ ] 1d - Using API data to build Regex to build example filenames. 
+  	- ? Who will generate the filenames (API or Client)?
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false

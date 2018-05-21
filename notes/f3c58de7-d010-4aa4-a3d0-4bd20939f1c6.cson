@@ -1,0 +1,154 @@
+createdAt: "2018-05-21T15:36:38.919Z"
+updatedAt: "2018-05-21T15:42:20.076Z"
+type: "MARKDOWN_NOTE"
+folder: "5a2ab880527ae7875e4a"
+title: "Front End Getting Started Setup"
+content: '''
+  # Front End Getting Started Setup
+  
+  After remote dev server is setup. Hosts file entry for 'dev-aws' to point at your VM's IP address.
+  
+  ## Overview
+  The front end architecture is a little in flux but this doc is current as of 1/9/18. 
+  
+  All npm scripts and dependencies are based in the folder `disco-app/CasiLabs.Disco.WebUI/client/bundler/stable`. Those dependencies and scripts are used to take the code from `disco-app/CasiLabs.Disco.WebUI/client/src` and build artifacts that are output to `disco-app/CasiLabs.Disco.WebUI/Scripts`.
+  
+  There is a local dev proxy that intercepts requests to your VM for those files and serves them from your local machine.
+  
+  ## Local Dev Manchine setup 
+  > Many of the scripts rely on the url `http://dev-aws` so we need to set that address up to point at your remove VM in EC2
+  
+  1. Goto EC2 instances list [instance list](https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#Instances:sort=instanceId)
+  	* Be sure your region is `west` in the url. When you log into AWS, users are sometimes defaulted to `east` region you need to manually change this to `west`. Modify the URL, replacing 'east' with 'west' and hit enter.
+  2. Search for your instance by name.
+  3. Click on your instance
+  4. In the panel at the bottom of the screen copy the `Private IPs` ip address. (usually 10.10.x.x)
+  	* __Note:__ As of the writing of this, ip addresses are static and don't change between VM start, stops, and reboots.
+  5. On your local machine add an entry to your hosts file for `dev-aws` that points to your VM's IP Address.
+  	* __On Mac__
+  		1. Open the __terminal__
+  		2. Edit your hosts file `sudo nano /etc/hosts`			If you don't do this with sudo you won't be able to save.
+  		3. At the bottom, add the following entries:  
+  			`YOUR_VMS_IP	dev-aws`  
+  			`YOUR_VMS_IP	login.dev.csdisco.com`
+  		4. Save and Exit.
+  	* __On PC__
+  		1. Press the Windows key.
+  		2. Type __Notepad__ in the search field.
+  		3. In the search results, right-click __Notepad__ and select __Run as administrator__.
+  		4. From Notepad, open the following file: `c:\\Windows\\System32\\Drivers\\etc\\hosts`
+  		5. At the bottom, add the following entries:  
+  			`YOUR_VMS_IP	dev-aws`  
+  			`YOUR_VMS_IP	login.dev.csdisco.com`
+  		6. Click __File > Save__ to save your changes.
+  
+  ## Understanding the FE app
+  The front end app is in `disco-app/CasiLabs.Disco.WebUI/client`
+  
+  Break Down of app directories
+  
+  ```bash
+  . client
+  ├── apps                     <-- This is the new direction of the architecture but still 
+  │                                WIP as of now. Soon each app with live in its own
+  │                                directory.
+  ├── build                    <-- Cache storage
+  ├── bundler                  <-- Exists to facilitate the need to introduce dependency 
+  │  │                             upgrades and build changes behind a feature toggle
+  │  ├── stable                <-- Resource root, the global node_modules
+  │  │  │                          and package.json file live here
+  │  │  ├── __template__       <-- Has shared resources; babel6, handlebars, 
+  │  │  │                          karma, less, pdfjs, and webpack configs
+  │  │  ├── node_modules
+  │  │  ├── package.json
+  │  │  └── yarn.lock
+  │  ├── README.md             <-- Explains how bundler works
+  │  └── ...
+  ├── core
+  ├── dependencies             <-- As shared resources were folded into the repo
+  │                                they were added here. Things like the style guide 
+  │                                (omakase), the icon library (discography), our 
+  │                                custom eslint plugin (eslint-plugin-disco), etc.
+  ├── docs                     <-- info on coding style, best practices
+  ├── less                     <-- legacy way of holding all styles in one folder. This is 
+  │                                now depreciated in favor individual styles sheets in the 
+  │                                folder of the  component that uses them.
+  ├── src                      <-- the root dir of the react app
+  ├── templates                <-- IDK, maybe legacy from backbone app days
+  ├── tests                    <-- all karma test live here
+  └── ...
+  ```
+  
+  ## Serving the app locally
+  > There are 2 processes that need to be run locally to server the app. They are both long running processes that must be left running while you are working.
+  
+  ### localhost proxy
+  The local proxy will connect your remote VM for data calls and look to the webpack server for the UI build files.
+  
+  Running the dev proxy:
+  > **Note:** You need to run the server as the sudo user so that it can bind to port 80.
+  
+  ```bash
+  cd disco-app/CasiLabs.Disco.WebUI/client/bundler/stable;
+  sudo yarn dev:proxy;
+  ```
+  
+  ### webpack
+  Webpack is used to serve up the app chunks while running locally
+  
+  Running webpack:
+  
+  ```bash
+  cd disco-app/CasiLabs.Disco.WebUI/client/bundler/stable;
+  sudo yarn dev:server;
+  ```
+  
+  ### Serving the app
+  After you start the dev proxy and the webpack server you can now access the website at [http://localhost/DiscoAdminNew/](http://localhost/DiscoAdminNew/)
+  
+  ## Using developer tools / local toggles
+  Support for developer tools in the app is controlled by a several toggles the values of which are stored in local storage. After viewing a matter in the app. Take a look at your local storage values and you should see several values such as:
+  
+  * disco:toggle:devtools-on
+  * disco:toggle:ignore-deprecations
+  * disco:toggle:log-events
+  * disco:toggle:log-profile
+  * disco:toggle:reactotron
+  * disco:toggle:redux-logger-on
+  * disco:toggle:redux-logger-prefix
+  * disco:toggle:sentry-on
+  * disco:toggle:show-row-index
+  
+  Manually change the value then reload the page to see the effect.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+'''
+tags: [
+  "setup"
+  "dev"
+  "getting_started"
+]
+isStarred: false
+isTrashed: false

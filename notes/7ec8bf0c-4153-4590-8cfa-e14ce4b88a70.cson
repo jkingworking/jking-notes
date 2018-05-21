@@ -1,0 +1,99 @@
+createdAt: "2018-05-21T15:38:19.194Z"
+updatedAt: "2018-05-21T15:38:26.663Z"
+type: "MARKDOWN_NOTE"
+folder: "5d266977ba7999e86786"
+title: "Existing drag and drop sorting"
+content: '''
+  # Existing drag and drop sorting
+  
+  ## Custom columns/views
+  > Draggable Backbone Mixin
+  
+  ## Exhibit sets
+  > Draggable Backbone Mixin
+  
+  ## Search Builder
+  > `react-dnd`
+  
+  ## Tags
+  > Draggable Backbone Mixin
+  
+  # Existing Internal
+  ## Draggable Backbone Mixin
+  > Addes event listening to backbone view
+  
+  ### TLDR;
+  - Date Introduced: May 2015
+  - Backbone mixin for backbone views
+  - Adds events onDragStart, onDragEnd
+  - Passes more data along for the ride dragData, dragImage
+  - aprox size 3kb
+  
+  ### Useages (5)
+  - `apps/review/components/backbone/mixins/sortable.js`: An extension of this detailed below.
+  - `apps/review/pages/exhibit-sets/documents/item.js`: Used to rearrange documents in an exhibit set.
+  - `apps/review/pages/exhibit-sets/documents/placeholder-button.js`: Used to put a placeholder in an exhibit set.
+  - `apps/review/pages/productions/create/features/custom-format/metadata-column.js`: Used to rearrange horizontal blocks for custom load file formats.
+  - `apps/review/pages/tags/components/draggable-group-list-item.js`: Used to rearrange tag groups vertically
+  
+  ## Omakase Draggable Component
+  > Basic draggable component.
+  
+  ### TLDR;
+  - React Component
+  - Date Introduced: Sept 2015
+  - Uses mouseMove, mouseUp, mouseDown events... not drag
+  - Clones children
+  - Must be used on each element not a collection of elements
+  - aprox size 12kb
+  
+  ### Useages (1)
+  - `search-results/custom-grid/grid-heading-cell-resizing`: used to change width of cells on drag
+  
+  ## Sortable Backbone Mixin
+  > Combines the Draggable and DropArea mixins to make a backbone sortable implementation.
+  
+  ### TLDR;
+  - Date Introduced: before Nov 2017 (git unclear)
+  - Backbone mixin for backbone views
+  - Combines two other mixins
+  - Adds event support for onDragEnter, onDragOver, onDragLeave, onDragDrop, onDragEnded
+  - aprox size 7kb (combined)
+  
+  ### Useages (3)
+  - `apps/review/pages/stages/edit/panels/documents/group-list.js`: Used to rearrange a vertical list of views
+  - `apps/review/pages/survey/editor.js`: Used to rearrange the decision panels (Legacy)
+  - `apps/review/pages/survey/decisions/tagging-list.js`: Used to rearrange the decision panels
+  
+  # Existing External
+  --
+  ## `react-dnd`
+  > React component that provides primitive controls for dragging and dropping files.
+  
+  ### TLDR;
+  - Date Introduced: Feb 2017
+  - React component that provides primitive controls 
+  
+  ### Useages (17)
+  - `apps/review/components/drag-drop-file-target.jsx`: 
+  - `apps/review/modules/custom-columns/utils-drag.js`: 
+  - `apps/review/modules/custom-columns/modal/index.jsx`: 
+  - `apps/review/modules/search-builder/canvas/builder.jsx`: 
+  - `apps/review/modules/search-builder/canvas/canvas.jsx`: 
+  - `apps/review/modules/search-builder/canvas/drag-targets.js`: 
+  - `apps/review/modules/search-builder/canvas/field-drag-source.js`: 
+  - `apps/review/modules/search-builder/canvas/group-drag-source.js`: 
+  - `apps/review/modules/search-builder/canvas/tree-root.jsx`: 
+  - `apps/review/modules/search-builder/picker/field-drag-source.js`: 
+  - `apps/review/pages/search-term-reports/report/report.jsx`: 
+  - `apps/review/pages/search-term-reports/report/term-list-item.jsx`: 
+  - `apps/review/pages/search-term-reports/report2/report.jsx`: 
+  - `apps/review/pages/search-term-reports/report2/term-list-item.jsx`: 
+  - `apps/review/pages/search-term-reports/tests/list.test.jsx`: 
+  - `apps/review/pages/stages/edit/panels/documents-react/group-list/drag.js`: 
+  - `apps/review/pages/stages/edit/panels/documents-react/group-list/group-list.jsx`: 
+  
+'''
+tags: []
+isStarred: false
+isTrashed: false
